@@ -19,6 +19,8 @@ void setup()
   server_readHolding();
 }
 
+//comentariu cosmin 20220926
+
 void loop()
 {
   if ((millis() - lastTime) > timerDelay)
