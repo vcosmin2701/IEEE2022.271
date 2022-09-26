@@ -1,0 +1,59 @@
+//      server.on("/settings", HTTP_GET, [] (AsyncWebServerRequest *request) {
+//          String baud_rate, databits, parity, stopBits, serverAdress;
+//  int int_databits;
+//          if (request->hasParam("baud_rate")) {
+//              baud_rate = request->getParam("baud_rate")->value();
+//  //            request->send(200, "text/plain", "baudrate " + baud_rate);
+//  Serial.print("baud_rate "+baud_rate);
+//          } 
+//                  if (request->hasParam("databits")) {
+//              databits = request->getParam("databits")->value();
+//  //            request->send(200, "text/plain", "databits " + databits);
+//  int_databits=databits.toInt();
+//  Serial.print("databits "+int_databits);
+//          }else {
+//              baud_rate = "No value sent";
+//              request->send(200, "text/plain", "baudrate " + baud_rate);
+//          }
+//           request->send(200, "text/plain", "baudrate " + baud_rate +"databits " + databits);
+//    
+//      });
+
+
+//for(int i=0;i<params;i++){
+//  AsyncWebParameter* p = request->getParam(i);
+//  if(p->isFile()){ //p->isPost() is also true
+//    Serial.printf("FILE[%s]: %s, size: %u\n", p->name().c_str(), p->value().c_str(), p->size());
+//  } else if(p->isPost()){
+//    Serial.printf("POST[%s]: %s\n", p->name().c_str(), p->value().c_str());
+//  } else {
+//    Serial.printf("GET[%s]: %s\n", p->name().c_str(), p->value().c_str());
+//  }
+//}
+
+
+
+
+////////////////////backup//////////////////
+
+ //incercari
+        // String functionCode, startAdress;
+
+        // if (request->hasParam("functionCode"))
+        // {
+        //     functionCode = request->getParam("functionCode")->value();
+        //     //            request->send(200, "text/html", "functionCode"+ functionCode);
+        //     Serial.print("functionCode " + functionCode);
+        // }
+        // if (request->hasParam("startAdress"))
+        // {
+        //     startAdress = request->getParam("startAdress")->value();
+        //     //            request->send(200, "text/html", "startAdress" + startAdress);
+        //     Serial.print("startAdress " + startAdress);
+        // }
+        // else
+        // {
+        //     functionCode = "No value sent";
+        //     startAdress = "No value sent";
+        // }
+        //         request->send(200, "text/html", index_html); 

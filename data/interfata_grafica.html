@@ -1,0 +1,203 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <link rel="stylesheet" href="style.css"> <!-- link to  CSS style file -->
+    <script src="scripts.js"></script> <!-- link to JavaScript functions  -->
+    <title>ESP Input Form</title> <!-- HTML file title -->
+
+    <!-- for automat redimension of window -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv=\refresh\ content=\1\>
+
+</head>
+
+<body onload="default_open();verificare_mesaj();afisare_valoare_modbus()">
+    <!-- call functions at startup -->
+
+    <a href="http://192.168.4.1/" style="text-decoration: inherit">
+        <!-- click on title to go to default page  -->
+        <h1>Controller wireless pentru Modbus RS485</h1><br>
+    </a>
+    <!-- info about battery voltage -->
+    <div class="batteryInfo">
+        <div class="batteryInfo_text">
+            <h3>Battery voltage [V]</h3>
+        </div>
+
+        <div class="batteryInfo_value">
+            <input type="number" id="batteryVoltage" name="batteryVoltage" value=%VOLTAGE% readonly>
+        </div>
+    </div>
+
+    <br>
+    <h2>Modbus Connection Options </h2><br>
+
+    <!-- Tab Settings -->
+
+    <!-- Tab links -->
+    <div class="tab">
+        <button class="tablinks" onclick="openTab(event, 'tab_settings')">Settings</button>
+        <button class="tablinks" onclick="openTab(event, 'tab_functions')" id="defaultOpen">Functions</button>
+    </div>
+    <!-- Tab content -->
+    <form action="/settings" method="get">
+        <div id="tab_settings" class="tabcontent">
+            <div class="row_settings">
+
+                <div class="column_settings">
+                    <h2 style="margin: 10px">Server Adress</h2>
+                    <input style="margin: 5px" type="number" id="serverAdress" name="serverAdress" value="1" min="1"
+                        max="247" onclick="update_consola('Server Adress', this.value)"><br>
+                </div>
+
+                <div class="column_settings">
+                    <div class="baud_rate">
+                        <p id="setting_baud_rate">Baud Rate [bps]</p>
+
+                        <input disabled type="radio" id="bdr_4800" name="baud_rate" value="4800"
+                            onclick="update_consola('Baud Rate', this.value)">
+                        <label for="bdr_4800">4800</label><br>
+
+                        <input type="radio" id="bdr_9600" name="baud_rate" value="9600" checked
+                            onclick="update_consola('Baud Rate', this.value)">
+                        <label for="bdr_9600">9600</label><br>
+
+                        <input disabled type="radio" id="bdr_14400" name="baud_rate" value="14400"
+                            onclick="update_consola('Baud Rate', this.value)">
+                        <label for="bdr_14400">14400</label><br>
+
+                        <input disabled type="radio" id="bdr_19200" name="baud_rate" value="19200"
+                            onclick="update_consola('Baud Rate',this.value)">
+                        <label for="bdr_19200">19200</label><br>
+
+                    </div>
+                </div>
+
+                <div class="column_settings">
+                    <div class="data_bits">
+                        <p id="setting_databits">Data Bits</p>
+
+                        <input type="radio" id="databits_8" name="databits" value="8" checked="checked"
+                            onclick="update_consola('Data Bits',this.value)">
+                        <label for="databits_8">8 bits</label><br>
+
+                        <!-- for future development -->
+                        <input type="radio" id="databits_7" name="databits" value="7" disabled
+                            onclick="update_consola('Data Bits',this.value)">
+                        <label for="databits_7">7 bits</label><br>
+
+                    </div>
+                </div>
+
+                <div class="column_settings">
+                    <div class="parity">
+                        <p id="settings_parity">Parity</p>
+
+                        <input type="radio" id="parity_none" name="parity" value="none" disabled>
+                        <label for="parity_none">None</label><br>
+                        <!-- for future development -->
+                        <input type="radio" id="parity_odd" name="parity" value="odd" disabled>
+                        <label for="parity_odd">Odd</label><br>
+
+                        <input type="radio" id="parity_even" name="parity" value="even" checked="checked"
+                            onclick="update_consola('Parity',this.value)">
+                        <label for="parity_even">Even</label><br>
+
+                    </div>
+                </div>
+
+                <div class="column_settings">
+                    <div class="stop_bits">
+                        <p>Stop Bits</p>
+
+                        <input type="radio" id="stopBits_1" name="stopBits" value="1" checked="checked"
+                            onclick="update_consola('Stop Bits',this.value)">
+                        <label for="stopBits_1">1 bit</label><br>
+                        <!-- for future development -->
+                        <input type="radio" id="stopbits_2" name="stopbits" value="2" disabled>
+                        <label for="stopbits_2">2 bit</label><br>
+
+                    </div>
+                </div>
+
+                <div class="column_settings">
+                    <button style="margin: 10px" id="settings_ok" onclick=submit_value(settings_ok)> Submit Settings
+                    </button><br><br><br>
+                </div>
+            </div>
+
+        </div>
+
+    </form>
+
+    <!-- Tab Functions -->
+
+    <div id="tab_functions" class="tabcontent">
+        <div class="row_function">
+
+            <div class="column_function">
+                <h2>Discrete Read</h2>
+                <form action="/readCoils" method="get">
+                    <div class="grid-container">
+                        <div class="grid-item item1"><label>Start Address</label></div>
+                        <input type="hidden" id="functionCode" name="functionCode" value="1">
+                        <div class="grid-item item2"><input type="number" id="startAdressBit" name="startAdress"
+                                value="0" min="0" max="65535" onclick="update_consola('Start Address', this.value)"><br>
+                        </div>
+                        <div class="grid-item item3"><label>Coil Count</label></div>
+                        <div class="grid-item item4"><input readonly type="number" id="coilCount" name="coilCount"
+                                value="1" min="0" max="255" onclick="update_consola('Coil Count', this.value)"><br>
+                        </div>
+                        <div class="grid-item item5"><button id="button_readCoils"
+                                onclick=submit_value(button_readCoils);> Read Coils </button>
+                        </div>
+                    </div>
+                </form><br>
+
+            </div>
+
+        </div>
+
+        <div class="row_function">
+            <div class="column_function">
+                <h2>Register Read</h2>
+                <form action="/readHolding" method="get">
+                    <div class="grid-container">
+                        <div class="grid-item item1"><label> First Register </label></div>
+                        <input type="hidden" id="functionCode" name="functionCode" value="3">
+                        <div class="grid-item item2"><input type="number" id="firstReg" name="firstReg" value="0"
+                                min="0" max="65535" onclick="update_consola('First Register', this.value)"><br></div>
+                        <div class="grid-item item3"><label>Register Count</label></div>
+                        <div class="grid-item item4">
+                            <input readonly type="number" id="regCount" name="regCount" value="1" min="0" max="255"
+                                onclick="update_consola('Register Count', this.value)"><br>
+                        </div>
+                        <div class="grid-item item5"><button id="button_readCoils"
+                                onclick=submit_value(button_readCoils);> Read Holding
+                                Register</button>
+                        </div>
+                    </div>
+                </form><br>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <!-- store the modbus response value -->
+        <input type="hidden" id="transaction_code" name="transaction_code" value=%TRANSACTION_CODE%>
+    </div>
+
+    <div>
+        <input type="hidden" id="mb_response" name="mb_response" value=%MODBUS_RESPONSE%>
+    </div>
+
+    <div><br>
+        <!-- text console to inform user about the actions taken -->
+        <textarea id="consola" name="consola" rows="10" cols="45" readonly></textarea>
+    </div>
+
+
+</body>
+
+</html>
