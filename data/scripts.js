@@ -9,6 +9,26 @@ function update_consola(id_parametru, parametru) {
   document.getElementById("consola").value += timestamp() + " ---> " + id_parametru + " = " + parametru + "\n";
   document.getElementById("consola").scrollTop = document.getElementById("consola").scrollHeight; //autoscroll
 }
+
+// TEST ZONE
+
+function update_consola1(id_parametru, parametru) {
+  document.getElementById("consola1").value += timestamp() + " ---> " + id_parametru + " = " + parametru + "\n";
+  document.getElementById("consola1").scrollTop = document.getElementById("consola").scrollHeight; //autoscroll
+}
+
+function update_consola2(id_parametru, parametru) {
+  document.getElementById("consola2").value += timestamp() + " ---> " + id_parametru + " = " + parametru + "\n";
+  document.getElementById("consola2").scrollTop = document.getElementById("consola").scrollHeight; //autoscroll
+}
+
+function update_consola3(id_parametru, parametru) {
+  document.getElementById("consola3").value += timestamp() + " ---> " + id_parametru + " = " + parametru + "\n";
+  document.getElementById("consola3").scrollTop = document.getElementById("consola").scrollHeight; //autoscroll
+}
+
+// END TESTING ZONE
+
 // convert form decimal to hexadecimal
 function decToHex(num) {
   return num.toString(16)

@@ -1,3 +1,8 @@
+.content {
+  max-width: 500px;
+  margin: auto;
+}
+
 h1 {
   color: rgb(0, 0, 0);
   text-align: left;
@@ -56,8 +61,18 @@ h3 {
   margin: 5px;
   box-sizing: border-box;
   border: 1px solid #ccc;
-  width: 200px;
+  width: 300px;
 }
+
+.column_function1 {
+  float: left;
+  padding: 2px;
+  margin: 5px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  width: 500px;
+}
+
 
 .row_function:after {
   content: "";
@@ -70,29 +85,32 @@ h3 {
 .tab {
   overflow: auto;
   border: 1px solid #ccc;
-  background-color: #f1f1f1;
+  background-color: #ccc;
 }
 
 /* Style the buttons inside the tab */
 .tab button {
-  background-color: inherit;
-  float: left;
+  background-color: #4CAF50; /* Green */
   border: none;
-  outline: none;
-  cursor: pointer;
-  padding: 10px 20px;
-  transition: 0.3s;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
   font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
 }
 
 /* Change background color of buttons on hover */
 .tab button:hover {
-  background-color: #ddd;
+  background-color: rgb(230, 155, 56);
 }
 
 /* Create an active/current tablink class */
 .tab button.active {
-  background-color: #ccc;
+  background-color: rgb(237, 19, 77);
 }
 
 /* Style the tab content */
@@ -148,3 +166,23 @@ button {
   grid-column: 1 / span 2;
   grid-row: 3;
 }
+
+.device1 {
+  grid-column: 1 / span 2;
+  grid-row: 3;
+}
+
+.device2 {
+  grid-column: 1 / span 2;
+  grid-row: 4;
+}
+
+.device3 {
+  grid-column: 1 / span 2;
+  grid-row: 5;
+}
+
+.spacer { 
+    margin-left: 50px;  
+    padding-left: 100px;  
+} 

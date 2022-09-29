@@ -1,5 +1,4 @@
 #include <functions.h>
-// modificat de Vladut Cosmin
 void setup()
 {
   Serial.begin(9600); // set serial communication with pc baudrate
@@ -18,8 +17,6 @@ void setup()
   server_readCoils();
   server_readHolding();
 }
-
-//comentariu cosmin 20220926
 
 void loop()
 {
