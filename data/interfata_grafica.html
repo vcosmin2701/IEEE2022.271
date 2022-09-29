@@ -13,6 +13,7 @@
 </head>
 
 <body onload="default_open();verificare_mesaj();afisare_valoare_modbus()">
+
     <!-- call functions at startup -->
 
     <a href="http://192.168.4.1/" style="text-decoration: inherit">
@@ -209,8 +210,8 @@
                             </div>
                        </div>
 
-                        <div class="grid-item device2"><button id="Unit2" value="2"
-                            onclick="update_consola2('button_Unit1', this.value)";> Action Device 2 </button>
+                        <div class="grid-item device2">
+                            <button id="Unit2" value="2" onclick="update_consola2('button_Unit1', this.value)";> Action Device 2 </button>
 
                             <div class="spacer">
                                 <!-- text console to inform user about the actions taken -->
@@ -249,7 +250,6 @@
         <!-- text console to inform user about the actions taken -->
         <textarea id="consola" name="consola" rows="10" cols="45" readonly></textarea>
     </div>
-
 
 </body>
 
