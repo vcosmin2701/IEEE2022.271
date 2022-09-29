@@ -39,6 +39,7 @@
     <div class="tab">
         <button class="tablinks" onclick="openTab(event, 'tab_settings')">Settings</button>
         <button class="tablinks" onclick="openTab(event, 'tab_functions')" id="defaultOpen">Functions</button>
+        <button class="tablinks" onclick="openTab(event, 'tab_devices')" id="defaultOpen">Devices</button>
     </div>
     <!-- Tab content -->
     <form action="/settings" method="get">
@@ -49,6 +50,13 @@
                     <h2 style="margin: 10px">Server Adress</h2>
                     <input style="margin: 5px" type="number" id="serverAdress" name="serverAdress" value="1" min="1"
                         max="247" onclick="update_consola('Server Adress', this.value)"><br>
+                </div>
+
+                <!--Device manager-->
+                <div class="column_settings">
+                    <h2 style="margin: 10px">Device</h2>
+                    <input style="margin: 5px" type="number" id="deviceManager" name="deviceManager" value="1" min="1"
+                        max="3" onclick="update_consola('Selected device ', this.value)"><br>
                 </div>
 
                 <div class="column_settings">
@@ -182,6 +190,51 @@
             </div>
         </div>
     </div>
+
+    <!--Devices tab -->
+
+    <div id="tab_devices" class="tabcontent">
+        <div class="row_function">
+            <div class="column_function1">
+                <h2 style="text-align:center">Select Device</h2>
+                <form action="/selectDevice" method="get">
+                    <div class="grid-container">
+
+                        <div class="grid-item device1">
+                            <button id="Unit1" value="1" onclick="update_consola1('button_Unit1', this.value)";> Action Device 1 </button>
+
+                            <div class="spacer">
+                                <!-- text console to inform user about the actions taken -->
+                                <textarea id="consola1" name="consola1" rows="3" cols="35" readonly></textarea>
+                            </div>
+                       </div>
+
+                        <div class="grid-item device2"><button id="Unit2" value="2"
+                            onclick="update_consola2('button_Unit1', this.value)";> Action Device 2 </button>
+
+                            <div class="spacer">
+                                <!-- text console to inform user about the actions taken -->
+                                <textarea id="consola2" name="consola2" rows="4" cols="35" readonly></textarea>
+                            </div>
+
+                        </div>
+
+                        <div class="grid-item device3"><button id="Unit3" value="3"
+                            onclick="update_consola3('button_Unit1', this.value)";> Action Device 3 </button>
+                            
+                            <div class="spacer">
+                                <!-- text console to inform user about the actions taken -->
+                                <textarea id="consola3" name="consola3" rows="5" cols="35" readonly></textarea>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </form><br>
+            </div>
+        </div>
+    </div>
+
+    <!--Devices tab end -->
 
     <div>
         <!-- store the modbus response value -->
